@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientProviderOptions, ClientsModule, Transport } from '@nestjs/microservices';
-import { PassagesModule } from './passages/passages.module';
+import { ClientProviderOptions, ClientsModule, Transport } from '@nestjs/microservices';;
+import { EquipmentModule } from './equipment/equipment.module';
+import { ClaimModule } from './claim/claim.module';
 
 const microservice_spring: ClientProviderOptions = 
 {
@@ -17,7 +18,8 @@ const microservice_spring: ClientProviderOptions =
 @Module({
   imports: [
     ClientsModule.register([ microservice_spring ]),
-    PassagesModule
+    EquipmentModule,
+    ClaimModule
   ],
   controllers: [AppController],
   providers: [AppService],
