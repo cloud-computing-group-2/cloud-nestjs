@@ -1,5 +1,4 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { EquipmentService } from './equipment.service';
 import { CreateEquipmentDto } from './dto/create-equipment.dto';
 import { UpdateEquipmentDto } from './dto/update-equipment.dto';
@@ -8,28 +7,28 @@ import { UpdateEquipmentDto } from './dto/update-equipment.dto';
 export class EquipmentController {
   constructor(private readonly equipmentService: EquipmentService) {}
 
-  @MessagePattern('createEquipment')
-  create(@Payload() createEquipmentDto: CreateEquipmentDto) {
+  @Post('createEquipment')
+  create(@Body() createEquipmentDto: CreateEquipmentDto) {
     return this.equipmentService.create(createEquipmentDto);
   }
 
-  @MessagePattern('findAllEquipment')
+  @Get('findAllEquipment')
   findAll() {
     return this.equipmentService.findAll();
   }
 
-  @MessagePattern('findOneEquipment')
-  findOne(@Payload() id: string) {
+  @Get('findOneEquipment')
+  findOne(@Param() id: string) {
     return this.equipmentService.findOne(id);
   }
 
-  @MessagePattern('updateEquipment')
-  update(@Payload() updateEquipmentDto: UpdateEquipmentDto) {
+  @Patch('updateEquipment')
+  update(@Body() updateEquipmentDto: UpdateEquipmentDto) {
     return this.equipmentService.update(updateEquipmentDto.id, updateEquipmentDto);
   }
 
-  @MessagePattern('removeEquipment')
-  remove(@Payload() id: string) {
+  @Delete('removeEquipment')
+  remove(@Param() id: string) {
     return this.equipmentService.remove(id);
   }
 }

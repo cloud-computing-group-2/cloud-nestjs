@@ -31,7 +31,7 @@ export class ClaimService {
     }).exec();
   }
 
-  async remove(id: string) {
+  async remove(id: number) {
     return this.claimModel.findByIdAndDelete(id).exec();
   }
 }

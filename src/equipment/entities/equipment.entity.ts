@@ -4,8 +4,19 @@ import { Type } from "class-transformer";
 import { Document } from "mongoose";
 import { randomUUID } from "crypto";
 
+export class Description {
+  @IsString()
+  @IsNotEmpty()
+  type: string;
+
+  @IsString()
+  @IsNotEmpty()
+  colour: string;
+}
+
+
 @Schema()
-export class Equipment extends Document {
+export class Equipment extends Document<string> {
   @Prop({ required: true, unique: true, default: () => `EQP-${randomUUID()}` })
   @IsString()
   @IsNotEmpty()
@@ -37,13 +48,3 @@ export class Equipment extends Document {
 }
 
 export const EquipmentSchema = SchemaFactory.createForClass(Equipment);
-
-export class Description {
-  @IsString()
-  @IsNotEmpty()
-  type: string;
-
-  @IsString()
-  @IsNotEmpty()
-  colour: string;
-}

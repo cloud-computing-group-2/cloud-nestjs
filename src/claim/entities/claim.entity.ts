@@ -6,7 +6,7 @@ export type Platform = "web" | "app";
 export type Reason = "lost" | "robbed" | "unprocessed" | "other";
 
 @Schema()
-export class Claim extends Document {
+export class Claim extends Document<number> {
 
   @IsString()
   @IsNotEmpty()
