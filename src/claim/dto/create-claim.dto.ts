@@ -4,7 +4,7 @@ import { IsDate, IsIn, IsNotEmpty, IsString } from "class-validator";
 export class CreateClaimDto {
     @IsString()
     @IsNotEmpty()
-    passenger: string;
+    passenger_id: string;
   
     @IsDate()
     @IsNotEmpty()

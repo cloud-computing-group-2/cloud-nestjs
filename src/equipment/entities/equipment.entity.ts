@@ -29,12 +29,12 @@ export class Equipment extends Document<string> {
   @Prop({ required: true })
   @IsString()
   @IsNotEmpty()
-  passenger: string; // Should be a Mongo ID or string UUID
+  passenger_id: string; // Should be a Mongo ID or string UUID
 
   @Prop({ required: true })
   @IsString()
   @IsNotEmpty()
-  flight: string; // Should be a Mongo ID or string UUID
+  flight_id: string; // Should be a Mongo ID or string UUID
 
   @Prop({ required: true })
   @IsString()

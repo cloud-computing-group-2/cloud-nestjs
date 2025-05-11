@@ -23,11 +23,11 @@ export class CreateEquipmentDto {
   
     @IsString()
     @IsNotEmpty()
-    passenger: string;
+    passenger_id: string;
   
     @IsString()
     @IsNotEmpty()
-    flight: string;
+    flight_id: string;
   
     @IsString()
     @IsNotEmpty()

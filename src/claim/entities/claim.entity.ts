@@ -11,7 +11,7 @@ export class Claim extends Document<number> {
   @IsString()
   @IsNotEmpty()
   @Prop({ required: true })
-  passenger: string;
+  passenger_id: string;
 
   @IsDate()
   @IsNotEmpty()
