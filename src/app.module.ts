@@ -7,9 +7,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 /**
- * sudo docker run -d \
+ * 
+sudo docker run -d \
+  --rm \
   --name my-mongo \
   -p 27017:27017 \
+  -e MONGO_INITDB_ROOT_USERNAME=user \
+  -e MONGO_INITDB_ROOT_PASSWORD=utec2025 \
+  -e MONGO_INITDB_DATABASE=sistema_equipaje \
   mongo:latest
  */
 @Module({
@@ -21,7 +26,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
-        console.log(config);
         const user = config.get('MONGO_USER');
         const pass = config.get('MONGO_PASSWORD');
         const host = config.get('MONGO_HOST');
