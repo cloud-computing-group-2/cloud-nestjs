@@ -9,7 +9,7 @@ async function bootstrap() {
     .setTitle('Sistema equipaje')
     .setDescription('Sistema equipaje API')
     .setVersion('1.0')
-    .addTag("equipaje")
+    .addTag("Equipment System")
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
