@@ -1,9 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { EquipmentService } from './equipment.service';
 import { CreateEquipmentDto } from './dto/create-equipment.dto';
 import { UpdateEquipmentDto } from './dto/update-equipment.dto';
 
-@Controller()
+@Controller("equipment")
 export class EquipmentController {
   constructor(private readonly equipmentService: EquipmentService) {}
 
@@ -30,5 +30,11 @@ export class EquipmentController {
   @Delete('removeEquipment')
   remove(@Param() id: string) {
     return this.equipmentService.remove(id);
+  }
+
+
+  @Post("/faker")
+  faker(@Query('count') count: number) {
+    return this.equipmentService.seed(count);
   }
 }

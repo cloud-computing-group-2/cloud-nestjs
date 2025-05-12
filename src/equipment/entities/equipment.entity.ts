@@ -11,7 +11,7 @@ export class Description {
 
   @IsString()
   @IsNotEmpty()
-  colour: string;
+  details: string;
 }
 
 

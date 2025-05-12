@@ -4,6 +4,7 @@ import { UpdateEquipmentDto } from './dto/update-equipment.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Equipment } from './entities/equipment.entity';
 import { Model } from 'mongoose';
+import { faker } from '@faker-js/faker';
 
 @Injectable()
 export class EquipmentService {
@@ -34,5 +35,27 @@ export class EquipmentService {
 
   async remove(id: string) {
     return this.equipmentModel.findByIdAndDelete(id).exec();
+  }
+
+  async seed(count = 10): Promise<Equipment[]> {
+    const equipments: Equipment[] = [];
+  
+    for (let i = 0; i < count; i++) {
+      const fakeEquipment: CreateEquipmentDto = {
+        tag: `EQP-${faker.string.uuid()}`,
+        registered_date: faker.date.recent(),
+        passenger_id: faker.string.uuid(),
+        flight_id: faker.string.uuid(),
+        weight: faker.number.float({ min: 5, max: 30 }).toFixed(1),
+        description: {
+          type: faker.commerce.productMaterial(),
+          colour: faker.color.human(),
+        },
+      };
+      const created = new this.equipmentModel(fakeEquipment);
+      equipments.push(await created.save());
+    }
+
+    return equipments;
   }
 }

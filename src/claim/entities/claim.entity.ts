@@ -27,6 +27,8 @@ export class Claim extends Document<number> {
   @IsNotEmpty()
   @Prop({ required: true })
   reason: Reason;
+
+  equipment_id: string;
 }
 
 export const ClaimSchema = SchemaFactory.createForClass(Claim);

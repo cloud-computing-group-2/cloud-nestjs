@@ -1,9 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { ClaimService } from './claim.service';
 import { CreateClaimDto } from './dto/create-claim.dto';
 import { UpdateClaimDto } from './dto/update-claim.dto';
 
-@Controller()
+@Controller("claim")
 export class ClaimController2 {
   constructor(private readonly claimService: ClaimService) {}
 
@@ -30,5 +30,10 @@ export class ClaimController2 {
   @Delete('removeClaim')
   remove(@Param() id: number) {
     return this.claimService.remove(id);
+  }
+
+  @Post("/faker")
+  faker(@Query('count') count: number) {
+    return this.claimService.seed(count);
   }
 }
