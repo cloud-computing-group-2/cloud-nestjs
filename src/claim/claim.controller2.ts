@@ -45,6 +45,11 @@ export class ClaimController2 {
     return this.claimService.remove(id);
   }
 
+  @Delete('removeAllClaim')
+  removeAll() {
+    return this.claimService.removeAll();
+  }
+
   @Post('/faker')
   @ApiOperation({ summary: 'Seed fake claim data' })
   @ApiQuery({ name: 'count', type: Number })

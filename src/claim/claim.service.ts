@@ -32,6 +32,10 @@ export class ClaimService {
     }).exec();
   }
 
+  async removeAll() {
+    this.claimModel.deleteMany({}).exec();
+  }
+
   async remove(id: number) {
     return this.claimModel.findByIdAndDelete(id).exec();
   }

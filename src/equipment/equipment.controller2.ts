@@ -44,8 +44,12 @@ export class EquipmentController {
     return this.equipmentService.remove(id);
   }
 
+  @Delete("removeAllEquipment")
+  removeAll() {
+    return this.equipmentService.removeAll();
+  }
 
-    @ApiOperation({ summary: 'Seed equipment data' })
+  @ApiOperation({ summary: 'Seed equipment data' })
   @ApiQuery({ name: 'count', required: true, type: Number })
   @Post("/faker")
   faker(@Query('count') count: number) {

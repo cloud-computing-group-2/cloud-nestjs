@@ -33,6 +33,10 @@ export class EquipmentService {
     }).exec();
   }
 
+  async removeAll() {
+    this.equipmentModel.deleteMany({}).exec();
+  }
+
   async remove(id: string) {
     return this.equipmentModel.findByIdAndDelete(id).exec();
   }
