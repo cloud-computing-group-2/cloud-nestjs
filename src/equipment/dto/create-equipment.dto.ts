@@ -27,12 +27,12 @@ export class CreateEquipmentDto {
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    passenger_id: string;
+    passenger_id: number;
     
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    flight_id: string;
+    flight_id: number;
   
     @ApiProperty()
     @IsString()

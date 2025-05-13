@@ -6,7 +6,7 @@ export class CreateClaimDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  passenger_id: string;
+  passenger_id: number;
 
   @ApiProperty({ type: String, format: 'date-time' })
   @IsDate()

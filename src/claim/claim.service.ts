@@ -47,7 +47,8 @@ export class ClaimService {
     console.log(count);
     for (let i = 0; i < count; i++) {
       fakeClaims.push({
-        passenger_id: faker.string.uuid(),
+        passenger_id: faker.number.int({ min: 1, max: 20000 }).toString(),
+        //passenger_id: faker.string.uuid(),
         claim_date: faker.date.recent(),
         claim_platform: faker.helpers.arrayElement(platforms),
         reason: faker.helpers.arrayElement(reasons),
