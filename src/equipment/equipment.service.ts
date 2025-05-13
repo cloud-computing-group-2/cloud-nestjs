@@ -48,8 +48,10 @@ export class EquipmentService {
       const fakeEquipment: CreateEquipmentDto = {
         tag: `EQP-${faker.string.uuid()}`,
         registered_date: faker.date.recent(),
-        passenger_id: faker.string.uuid(),
-        flight_id: faker.string.uuid(),
+        passenger_id: faker.number.int({ min: 1, max: 20000 }), // número entre 1 y 20000
+        //passenger_id: faker.string.uuid(),
+        //flight_id: faker.string.uuid(),
+        flight_id: faker.number.int({ min: 1, max: 20000 }), // número entre 1 y 20000
         weight: faker.number.float({ min: 5, max: 30 }).toFixed(1),
         description: {
           type: faker.commerce.productMaterial(),
